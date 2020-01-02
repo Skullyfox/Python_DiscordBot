@@ -7,6 +7,7 @@ def Auth(Token):
             print('Logged on as', self.user)
 
         async def on_message(self, message):
+            splittedMessage = message.content.split(' ')
             
             # don't respond to ourselves
             if message.author == self.user:
@@ -14,6 +15,9 @@ def Auth(Token):
 
             if message.content == 'ping':
                 await OnMessage.pong(message)
+            
+            if splittedMessage[0] == '!embed':
+                await OnMessage.embed(message)
 
 
     client = MyClient()
